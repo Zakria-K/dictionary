@@ -1,0 +1,41 @@
+{%extends 'layout.html'%}
+{%block body%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <h4 class="text-center card bg-warning text-white p-2">Search Here</h4>
+            <div class="card bg-dark px-4 py-5">
+            <form action="{%url 'search' %}" method="GET">
+<!--                {% csrf_token %}-->
+                <div class="form-group">
+                    <label class="text-light">Word:</label>
+                    <input type="text" class="form-control" required name="word" placeholder="Search..." autocomplete="off">
+                </div>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+
+            </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="bg-danger text-center text-light p-3">
+                <h5>Recent Searched</h5>
+            </div>
+            <div class="card bg-light px-2">
+                {%for word in words%}
+                    <p class="p-1">
+                        <a href="{%url 'search'%}?word={{word}}">
+                            {{word}}
+                        </a>
+                    </p>
+                {%empty%}
+                    <p class="p-1"><i>No recent search yet!</i></p>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

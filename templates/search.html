@@ -1,0 +1,15 @@
+{%extends 'layout.html'%}
+{%block body%}
+
+<div class="container mt-5">
+    <div class="p-5 bg-dark text-light card">
+        {% if meaning %}
+            <h3>{{word}}:</h3>
+            <p><i>&nbsp &nbsp &nbsp &nbsp {{meaning}}</i></p>
+        {% else %}
+            <p>&nbsp &nbsp &nbsp No Such Word Found!</p>
+        {%endif%}
+    </div>
+    <a class="btn btn-outline-dark mt-2" href="{%url 'index'%}">Go to Home</a>
+</div>
+{%endblock%}
